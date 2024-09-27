@@ -29,15 +29,14 @@ const mongoURL = `mongodb+srv://${dbUser}:${dbPass}@${dbHost}/${dbName}?retryWri
 
 
 mongoose
-  .connect(
-    mongoURL
-  )
+  .connect(mongoURL)
   .then(() => {
     console.log("Connected to database!");
-    app.listen(portApp, () => {
-      console.log(`Server is running on port ${portApp}`);
-    });
   })
-  .catch(() => {
-    console.log("Connection failed!");
+  .catch((error) => {
+    console.error("Database connection failed:", error);
   });
+
+app.listen(portApp, () => {
+  console.log(`Server is running on port ${portApp}`);
+});
