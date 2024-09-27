@@ -10,6 +10,7 @@ const dbUser = process.env.DB_USER;
 const dbPass = process.env.DB_PASS;
 const dbHost = process.env.DB_HOST;
 const dbName = process.env.DB_NAME;
+const portApp = process.env.PORT || 4000;
 
 
 // middleware
@@ -33,8 +34,8 @@ mongoose
   )
   .then(() => {
     console.log("Connected to database!");
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    app.listen(portApp, () => {
+      console.log(`Server is running on port ${portApp}`);
     });
   })
   .catch(() => {
